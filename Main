@@ -18,8 +18,8 @@ X = 0
 K = 0
 MRP = 100
 while True:
+    phno = input("input Ph no {format - 91+XXXXXXXXXX}\t")
     while X == 0:
-        phno = input("input Ph no {format - 91+XXXXXXXXXX}\t")
         for row in range(2, 1048577):
             pch = ws["B"+str(row)].value
             if pch == phno:
@@ -31,7 +31,7 @@ while True:
                 loyalty = int(ws["V"+str(row)].value) + 0.1
                 X = 1
                 break
-            else:
+            if pch != phno and row == 1048576:
                 name = str(input("Enter name \t"))
                 bday = int(input("Enter birth date\t"))
                 bmon = int(input("Enter birth month\t"))
@@ -40,26 +40,21 @@ while True:
                 loyalty = 0
                 X = 1
                 break
-            break
     for row in range(2, 1048577):
         W = ws["A"+str(row)].value
-        if W == "None":
-            srNO = int(row)
-            billno = ws["H" + str(srNO - 1)].value
-            billno = int(billno) + 1
-
+        if W != row - 1:
+            srNO = int(row) - 1
+            billno = ws["H" + str(srNO)].value
+            break
     X = datetime.datetime.now()
     d = int(X.strftime("%d"))
     m = int(X.strftime("%m"))
     H = int(X.strftime("%H"))
     M = int(X.strftime("%M"))
+    MOP = str(input("method of payment\t"))
     noA = int(input("No. of articles\t"))
     Y = 0
-    Z = 0
     while Y != noA:
-        while Z == 0:
-            MOP = str(input("method of payment\t"))
-            Z = 1
         Art_no = int(input("Enter the same article number\t"))
         QNT = int(input("Enter no. of similar article\t"))
         # mrp =
@@ -71,10 +66,10 @@ while True:
         SP = amount - amount * discount
         Y = Y + QNT
         ws.append([srNO, phno, name, d, m, H, M, billno, Art_no, "desc", QNT, "OUM", MRP, amount, discount, SP, MOP, bday, bmon, aday, amon, loyalty, "F"])
-    wb.save('C:\\Users\\user\\PycharmProjects\\Billing\\DATABASE FOR BILLING.xlsx')
+    wb.save('DATABASE FOR BILLING.xlsx')
     print("SAVED")
     print("\n\n\n ***THANKS FOR SHOPPING WITH US***\n\n\n")
     os.system('cls')
     time.sleep(3)
-    exit()
     os.system("main.py")
+    exit()
