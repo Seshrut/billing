@@ -42,11 +42,11 @@ while True:
                 break
             break
     for row in range(2, 1048577):
-        if ws["W"+str(row)].value == "E":
+        W = ws["A"+str(row)].value
+        if W == "None":
             srNO = int(row)
-            billno = ws["H"+str(srNO-1)].value
+            billno = ws["H" + str(srNO - 1)].value
             billno = int(billno) + 1
-            break
 
     X = datetime.datetime.now()
     d = int(X.strftime("%d"))
