@@ -18,7 +18,7 @@ X = 0
 K = 0
 MRP = 100
 while True:
-    phno = input("input Ph no {format - 91+XXXXXXXXXX}\t")
+    phno = str(input("input Ph no {format - 91+XXXXXXXXXX}\t"))
     while X == 0:
         for row in range(2, 1048577):
             pch = ws["B"+str(row)].value
@@ -31,7 +31,7 @@ while True:
                 loyalty = int(ws["V"+str(row)].value) + 0.1
                 X = 1
                 break
-            if pch != phno and row == 1048576:
+            if pch != phno and row == ws.max_row:
                 name = str(input("Enter name \t"))
                 bday = int(input("Enter birth date\t"))
                 bmon = int(input("Enter birth month\t"))
@@ -59,10 +59,10 @@ while True:
         QNT = int(input("Enter no. of similar article\t"))
         # mrp =
         amount = QNT * MRP
-        discount = loyalty - 1
+        discount = loyalty
         if d == bday or d == aday:
             if m == bmon or m == amon:
-                discount = 20 + loyalty - 1
+                discount = 20 + discount
         SP = amount - amount * discount
         Y = Y + QNT
         ws.append([srNO, phno, name, d, m, H, M, billno, Art_no, "desc", QNT, "OUM", MRP, amount, discount, SP, MOP, bday, bmon, aday, amon, loyalty, "F"])
