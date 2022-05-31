@@ -7,16 +7,20 @@ import os
 from openpyxl import load_workbook, workbook
 from openpyxl.utils import get_column_letter
 
+def clear():
+    print("\n"*30)
+
 # load workbook
-# WB = load_workbook("ZMCH.XLSX") #future update
-wb = load_workbook('DATABASE FOR BILLING.xlsx')
+WB = load_workbook("ZMCH.xlsx")
+wb = load_workbook('C:\\Users\\user\\PycharmProjects\\Billing\\DATABASE FOR BILLING.xlsx')
 # load worksheet
-# WS = WB.active #future update
+WS = WB.active
 ws = wb.active
+
 srNO = 0
 X = 0
 K = 0
-MRP = 100
+
 while True:
     phno = str(input("input Ph no {format - 91+XXXXXXXXXX}\t"))
     while X == 0:
@@ -39,6 +43,7 @@ while True:
                 amon = int(input("Enter anniversary month\t"))
                 loyalty = 0
                 X = 1
+                clear()
                 break
     for row in range(2, 1048577):
         W = ws["A"+str(row)].value
@@ -56,6 +61,19 @@ while True:
     Y = 0
     while Y != noA:
         Art_no = int(input("Enter the same article number\t"))
+        for ROW in range(1, 7000):
+            ART_NO = WS["A"+str(ROW)].value
+            if Art_no == ART_NO:
+                desc = WS["B"+str(ROW)].value
+                MRP = WS["C"+str(ROW)].value
+                OUM = WS["D"+str(ROW)].vlaue
+                break
+            elif Art_no != ART_NO and ROW == WS.max_row:
+                print("ENTER A LEGITIMATE ARTICLE NUMBER NEXT TIME")
+                time.sleep(2)
+                clear()
+                os.system("main.py")
+                exit()
         QNT = int(input("Enter no. of similar article\t"))
         # mrp =
         amount = QNT * MRP
@@ -65,12 +83,11 @@ while True:
                 discount = 20 + discount
         SP = amount - amount * discount
         Y = Y + QNT
-        ws.append([srNO, phno, name, d, m, H, M, billno, Art_no, "desc", QNT, "OUM", MRP, amount, discount, SP, MOP, bday, bmon, aday, amon, loyalty, "F"])
+        ws.append([srNO, phno, name, d, m, H, M, billno, Art_no, desc, QNT, OUM, MRP, amount, discount, SP, MOP, bday, bmon, aday, amon, loyalty, "F"])
     wb.save('DATABASE FOR BILLING.xlsx')
     print("SAVED")
     print("\n\n\n ***THANKS FOR SHOPPING WITH US***\n\n\n")
-    os.system('cls')
-    time.sleep(3)
+    time.sleep(2)
+    clear()
     os.system("main.py")
     exit()
-    
