@@ -6,3 +6,5 @@ The code scans for already existing data using the phone number, and loads the d
 
 
 Any suggestion regarding increase in efficency is most welcome.
+
+NOT YET COMPLETE
