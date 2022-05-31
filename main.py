@@ -73,3 +73,4 @@ while True:
     time.sleep(3)
     os.system("main.py")
     exit()
+    
