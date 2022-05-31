@@ -8,10 +8,10 @@ from openpyxl import load_workbook, workbook
 from openpyxl.utils import get_column_letter
 
 # load workbook
-# WB = load_workbook("C:\\Users\\user\\OneDrive\\Desktop\\ZMCH all.XLSX")
-wb = load_workbook('C:\\Users\\user\\PycharmProjects\\Billing\\DATABASE FOR BILLING.xlsx')
+# WB = load_workbook("ZMCH.XLSX") #future update
+wb = load_workbook('DATABASE FOR BILLING.xlsx')
 # load worksheet
-# WS = WB.active
+# WS = WB.active #future update
 ws = wb.active
 srNO = 0
 X = 0
