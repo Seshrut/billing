@@ -7,8 +7,10 @@ import os
 from openpyxl import load_workbook, workbook
 from openpyxl.utils import get_column_letter
 
+
 def clear():
     print("\n"*30)
+
 
 # load workbook
 WB = load_workbook("ZMCH.xlsx")
@@ -24,7 +26,7 @@ K = 0
 while True:
     phno = str(input("input Ph no {format - 91+XXXXXXXXXX}\t"))
     while X == 0:
-        for row in range(2, 1048577):
+        for row in range(2, ws.max_row+1):
             pch = ws["B"+str(row)].value
             if pch == phno:
                 name = ws["C"+str(row)].value
@@ -45,7 +47,7 @@ while True:
                 X = 1
                 clear()
                 break
-    for row in range(2, 1048577):
+    for row in range(2, ws.max_row+1):
         W = ws["A"+str(row)].value
         if W != row - 1:
             srNO = int(row) - 1
@@ -66,7 +68,7 @@ while True:
             if Art_no == ART_NO:
                 desc = WS["B"+str(ROW)].value
                 MRP = WS["C"+str(ROW)].value
-                OUM = WS["D"+str(ROW)].vlaue
+                OUM = WS["D"+str(ROW)].value
                 break
             elif Art_no != ART_NO and ROW == WS.max_row:
                 print("ENTER A LEGITIMATE ARTICLE NUMBER NEXT TIME")
@@ -83,11 +85,12 @@ while True:
                 discount = 20 + discount
         SP = amount - amount * discount
         Y = Y + QNT
-        ws.append([srNO, phno, name, d, m, H, M, billno, Art_no, desc, QNT, OUM, MRP, amount, discount, SP, MOP, bday, bmon, aday, amon, loyalty, "F"])
+        ws.append([srNO, phno, name, d, m, H, M, billno, Art_no, desc, QNT, OUM, MRP, amount, discount, SP, MOP, bday, bmon, aday, amon, loyalty, "U", "U"])
     wb.save('DATABASE FOR BILLING.xlsx')
     print("SAVED")
     print("\n\n\n ***THANKS FOR SHOPPING WITH US***\n\n\n")
     time.sleep(2)
     clear()
     os.system("main.py")
+    os.system("updater.py")
     exit()
