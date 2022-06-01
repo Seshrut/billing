@@ -92,5 +92,5 @@ while True:
     time.sleep(2)
     clear()
     os.system("main.py")
-    os.system("updater.py")
+    os.system("background.py")
     exit()
