@@ -7,5 +7,22 @@ The code scans for already existing data using the phone number, and loads the d
 
 Any suggestion regarding increase in efficency is most welcome.
 
-NOT YET COMPLETE
-added an example excel file to get info of an article
+Features
++ It stores loyalty points of customers, adding loyalty at each visit.
++ It sends special offers on birthdays and anniversaries {via WhatsApp}
++ It is an open-source code
+
+CATION
+- It uses WhatsApp to send special offers, so it's important to keep your system online.
+- The excel sheet shall not be hampered with, DO NOT DELETE THE FIRST ENTRY IN EXCEL FILE
+
+Instructions ➡️ 
+i.     install [python](https://www.python.org/downloads/)
+
+ii.     paste these commands in CMD one by one
+- pip install [openpyxl](https://pypi.org/project/openpyxl/)
+- pip install [pywhatkit](https://pypi.org/project/pywhatkit/)
+
+iii.     open main.py
+
+iv.     enter the data of your customer and do nothing
