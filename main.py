@@ -92,7 +92,13 @@ while True:
                     discount = 20 + discount
             SP = amount - amount * discount
             Y = Y + QNT
+            print("Cost of " + QNT + desc + " is " + SP)
             ws.append([srNO, phno, name, d, m, H, M, billno, Art_no, desc, QNT, OUM, MRP, amount, discount, SP, MOP, bday, bmon, aday, amon, loyalty, "U", "U"])
+        price = 0
+        for row in range(ws.max_row - noA, ws.max_row + 1):
+            Sp_total = ws["P"+str(row)].value
+            price += Sp_total
+        print("TOTAL COST = " + price)
         wb.save('DATABASE FOR BILLING.xlsx')
         print("SAVED")
         print("\n\n\n ***THANKS FOR SHOPPING WITH US***\n\n\n")
