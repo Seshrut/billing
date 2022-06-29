@@ -16,7 +16,7 @@ H = int(X.strftime("%H"))  # hour
 M = int(X.strftime("%M"))  # minute
 
 wb = load_workbook("DATABASE FOR BILLING.xlsx")
-ws = wb.active
+ws = wb['Customers']
 disc = 45
 
 for row in range(1, ws.max_row+1):
