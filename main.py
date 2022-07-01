@@ -1,14 +1,20 @@
-import pandas as pd
-import openpyxl
-from openpyxl import *
 import os
+try:
+    import pandas as pd
+except ModuleNotFoundError:
+    os.system('pip install pandas')
+try:
+    import openpyxl
+    from openpyxl import *
+except ModuleNotFoundError:
+    os.system('pip install openpyxl')
+    os.system('pip install pywhatkit')
 import datetime
 from datetime import *
 import time
 
-
-def clear():
-    print("\n"*30)
+def clear(lines=45):
+    print("\n"*lines)
 
 
 # Try except to make workbook or not
@@ -75,7 +81,7 @@ except Exception as new:
     os.startfile("DATABASE.xlsx")
     exit()
 # Enter E --> open excel
-
+clear()
 inp1 = input("Enter E to open excel and Enter key to continue\t")
 if inp1 == "E" or inp1 == "e":
     os.startfile("DATABASE.xlsx")
@@ -198,5 +204,4 @@ else:
     time.sleep(10)
     clear()
     os.system("main.py")
-    os.system('background.py')
     exit()
