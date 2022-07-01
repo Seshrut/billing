@@ -22,13 +22,8 @@ i.       Log into [Whatsapp Web](https://web.whatsapp.com)
 
 ii.     install [python](https://www.python.org/downloads/)
 
-iii.     paste these commands in CMD one by one
-          - pip install [openpyxl](https://pypi.org/project/openpyxl/)
-          - pip install [Pandas](https://pypi.org/project/pandas/)
-          - pip install [pywhatkit](https://pypi.org/project/pywhatkit/)
+iii.     open *main.py*
 
-iv.     open *main.py*
+iv.     Fill the *articles tab of the database.*
 
-v.     Fill the *articles tab of the database.*
-
-vi.      Run *main.py* to start billing
+v.      Run *main.py* to start billing
