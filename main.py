@@ -198,4 +198,5 @@ else:
     time.sleep(10)
     clear()
     os.system("main.py")
+    os.system('background.py')
     exit()
