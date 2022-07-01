@@ -6,18 +6,18 @@ The code scans for already existing data using the phone number, and loads the d
 
 
 Any suggestion regarding increase in efficency is most welcome.
-
-Features
+<hr>
+FEATURES :-
 + It stores loyalty points of customers, adding loyalty at each visit.
 + It generates the DATABASE file, Just fill the articles list
 + It sends special offers on birthdays and anniversaries {via WhatsApp}
 + It is an open-source code
-
-CATION
+<hr>
+CATION :-
 - It uses WhatsApp to send special offers, so it's important to keep your system online.
+<hr>
 
-
-***INSTRUCTIONS*** ➡️ 
+***INSTRUCTIONS*** ➡️ <br>
 i.       Log into [Whatsapp Web](https://web.whatsapp.com)
 
 ii.     install [python](https://www.python.org/downloads/)
@@ -27,3 +27,6 @@ iii.     open *main.py*
 iv.     Fill the *articles tab of the database.*
 
 v.      Run *main.py* to start billing
+<hr>
+<hr>
+<hr>
