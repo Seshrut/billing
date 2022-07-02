@@ -15,10 +15,15 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
+    types: [opened, closed, edited, reopened]
     # The branches below must be a subset of the branches above
     branches: [ "main" ]
   schedule:
     - cron: '10 13 * * *'
+  branch_protection_rule:
+    types: [created, deleted, edited]
+    release:
+      types: [published, unpublished, created, edited, deleted, released]
 
 jobs:
   analyze:
