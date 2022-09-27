@@ -1,5 +1,11 @@
 ![pythonlogo](https://user-images.githubusercontent.com/68181593/176946728-8b4248f2-4fa0-45e8-9d3e-07fdde305ef0.png)
 <br>
+<pre>
+
+<b><h1> <a herf "https://github.com/Seshrut/billing/releases/download/v0.0.6/BillWare-v0.0.6.Setup.exe"><button type="button">DOWNLOAD LATEST VERSION</button></a ></H1><b>
+
+
+<hr>
 
 This is a python project suggested to act upon by my dear dad.
 The code will use an excel file to store its data.
