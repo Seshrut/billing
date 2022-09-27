@@ -1,10 +1,7 @@
 ![pythonlogo](https://user-images.githubusercontent.com/68181593/176946728-8b4248f2-4fa0-45e8-9d3e-07fdde305ef0.png)
 <br>
-<h1>
-<b>
+
 [DOWNLOAD LATEST VERSION](https://github.com/Seshrut/billing/releases/download/v0.0.6/BillWare-v0.0.6.Setup.exe)
-</b>
-</h1>
 
 <hr>
 
