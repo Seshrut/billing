@@ -2,7 +2,7 @@
 <br>
 <pre>
 
-<b><h1> <a herf="https://github.com/Seshrut/billing/releases/download/v0.0.6/BillWare-v0.0.6.Setup.exe">DOWNLOAD LATEST VERSION</a></H1><b>
+<b><h1>[DOWNLOAD LATEST](https://github.com/Seshrut/billing/releases/download/v0.0.6/BillWare-v0.0.6.Setup.exe) VERSION</H1><b>
 
 
 <hr>
