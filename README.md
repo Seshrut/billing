@@ -2,7 +2,7 @@
 <br>
 <pre>
 
-<h1>[DOWNLOAD LATEST VERSION](https://github.com/Seshrut/billing/releases/download/v0.0.6/BillWare-v0.0.6.Setup.exe)</h1>
+[DOWNLOAD LATEST VERSION](https://github.com/Seshrut/billing/releases/download/v0.0.6/BillWare-v0.0.6.Setup.exe)
 
 
 <hr>
