@@ -8,6 +8,9 @@ try:
     from openpyxl import *
 except ModuleNotFoundError:
     os.system('pip install openpyxl')
+try:
+    import pywhatkit
+except ModuleNotFoundError:
     os.system('pip install pywhatkit')
 import datetime
 from datetime import *
@@ -119,11 +122,12 @@ else:
         billno = bill.max_row  # bill number for current bill
         print(billno)
     X = datetime.now()
-    d = int(X.strftime("%d"))
-    m = int(X.strftime("%m"))
-    H = int(X.strftime("%H"))
-    M = int(X.strftime("%M"))
-    date = datetime.today()
+    d = X.strftime("%d")
+    m = X.strftime("%m")
+    H = X.strftime("%H")
+    M = X.strftime("%M")
+    yr = X.strftime("%y")
+    Date = str(d)+"-"+str(yr)+"-"+str(m)
     time_now = X.strftime("%H:%M")
     MOP = str(input("method of payment\t"))
     noA = int(input("No. of articles\t"))
@@ -154,7 +158,12 @@ else:
                 CP = art["E"+str(ROW)].value
                 break
             elif Art_no != ART_NO and ROW == art.max_row:
-                print("ENTER A LEGITIMATE ARTICLE NUMBER NEXT TIME")
+                print("ENTER PRODUCT DETAILS")
+		        det = str(input())
+		        nMRP = int(input())
+		        art.append([Art_no,det,nMRP])
+		        MRP = nMRP
+		        desc = det
                 time.sleep(2)
                 clear()
                 os.system("main.py")
@@ -190,7 +199,7 @@ else:
         CP = int(CP)
         profit = SP - CP
         profit = int(profit)
-        invoice.append([phno, Art_no, desc, QNT, OUM, MRP, amount, discount, SP, CP, MOP, profit, billno, date, time_now])
+        invoice.append([phno, Art_no, desc, QNT, OUM, MRP, amount, discount, SP, CP, MOP, profit, billno, Date, time_now])
         ran = ran + 1
     bill.append([phno, d, m, H, M, SP_all, MOP, CP_all, profit_now, billno])  # has to be out to enter once
     price = 0
