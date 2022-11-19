@@ -16,6 +16,7 @@ import datetime
 from datetime import *
 import time
 
+
 def clear(lines=45):
     print("\n"*lines)
 
@@ -27,6 +28,7 @@ try:
     bill = wb["Billing"]
     invoice = wb["Invoice"]
     art = wb["Articles"]
+
 except Exception as new:
     print("Making a new DATABASE file \n Fill the Articles tab \n ARTICLES SHALL BE IN ASSENDING ORDER")
     wb = openpyxl.Workbook()
@@ -83,6 +85,7 @@ except Exception as new:
     wb.save("DATABASE.xlsx")
     os.startfile("DATABASE.xlsx")
     exit()
+
 # Enter E --> open excel
 clear()
 inp1 = input("Enter E to open excel and Enter key to continue\t")
@@ -91,8 +94,9 @@ if inp1 == "E" or inp1 == "e":
     clear()
     os.system("main.py")
     exit()
+
 else:
-    # loads details if customer exists
+    # loads details if customer exists by phno
     X = 1
     phno = str(input("input Ph no {format - 91+XXXXXXXXXX}\t"))
     for row in range(1, cust.max_row + 1):
@@ -107,7 +111,7 @@ else:
             frequency = cust["I"+str(row)].value + 1
             exists = True
             break
-        if pch != phno and row == cust.max_row:
+        elif pch != phno and row == cust.max_row:
             name = str(input("Enter name \t"))
             bday = int(input("Enter birth date\t"))
             bmon = int(input("Enter birth month\t"))
@@ -116,21 +120,21 @@ else:
             frequency = 1
             exists = False
             break
-    if bill.max_row == 1:
-        billno = 1
-    elif bill.max_row != 1:
-        billno = bill.max_row  # bill number for current bill
-        print(billno)
+    billno = bill.max_row  # bill number for current bill
+    print(billno)
+
+    # gather time-date info
     X = datetime.now()
-    d = X.strftime("%d")
-    m = X.strftime("%m")
-    H = X.strftime("%H")
-    M = X.strftime("%M")
-    yr = X.strftime("%y")
+    d = int(X.strftime("%d"))
+    m = int(X.strftime("%m"))
+    H = int(X.strftime("%H"))
+    M = int(X.strftime("%M"))
+    yr = int(X.strftime("%y"))
     Date = str(d)+"-"+str(yr)+"-"+str(m)
     time_now = X.strftime("%H:%M")
+
     MOP = str(input("method of payment\t"))
-    noA = int(input("No. of articles\t"))
+    noA = int(input("Total No. of articles\t"))
     Y = 0  # count if Noa reaches --> turn while loop off
     total_shopping = 0  # total SP collected over time
     prev_profit = 0
@@ -145,30 +149,28 @@ else:
     X = 1
     SP_all = 0
     CP_all = 0
+    MRPT = 0
     while Y != noA:
-        Art_no = int(input("Enter the same article number\t"))
+        Art_no = int(input("Scan barcode for article "+ X +"\t"))
         ran = 0  # for getting how many rows filled / ran this X no. of times
         for ROW in range(1, art.max_row + 1):
             ART_NO = art["A" + str(ROW)].value
-            # to check if article number is valid
+            # to check if article number is present
             if Art_no == ART_NO:
                 desc = art["B" + str(ROW)].value
                 MRP = art["C" + str(ROW)].value
                 OUM = art["D" + str(ROW)].value
                 CP = art["E"+str(ROW)].value
+                MRPT += MRP
                 break
+            # add the article num not present then and there
             elif Art_no != ART_NO and ROW == art.max_row:
-                print("ENTER PRODUCT DETAILS")
-		        det = str(input())
-		        nMRP = int(input())
-		        art.append([Art_no,det,nMRP])
-		        MRP = nMRP
-		        desc = det
-                time.sleep(2)
-                clear()
-                os.system("main.py")
-                exit()
-        QNT = int(input("Enter no. of similar article\t"))
+                desc = str(input("ENTER PRODUCT DESCRIPTION\t"))
+                MRP = float(input("ENTER PRODUCT MRP\t"))
+                OUM = str(input("ENTER THE UNIT OF MEASUREMENT FOR IT \t"))
+                CP = float(input("ENTER THE COST PRICE\t"))
+                MRPT += MRP
+        QNT = int(input("No. of Article "+ X + "/t"))
         amount = QNT * MRP  # cost of same articles
         constant = (total_shopping / (frequency*300))  # constant for getting discount --> CHANGE
         discount = frequency + constant  # discount determination
@@ -206,12 +208,14 @@ else:
     print(invoice.max_row)
     print("TOTAL COST = " + str(SP_all))
     wb.save('DATABASE.xlsx')
-    print("SAVED")
+    print("SAVED = " + str(MRPT - SP_all) + "\-")
     db = pd.read_excel("DATABASE.xlsx", "Invoice", dtype=str, index_col=None)
     # db.to_csv('Machine Learning Database.csv', encode=utf_8_encode, header=True)
     print("\n\n\n ***THANKS FOR SHOPPING WITH US***\n\n\n")
     time.sleep(10)
+    input("PRESS ENTER TO CONTINUE")
     clear()
     os.system("main.py")
     os.system('background.py')
     exit()
+    
