@@ -151,7 +151,7 @@ else:
     CP_all = 0
     MRPT = 0
     while Y != noA:
-        Art_no = int(input("Scan barcode for article "+ X +"\t"))
+        Art_no = int(input("Scan barcode for article "+ str(X) +"\t"))
         ran = 0  # for getting how many rows filled / ran this X no. of times
         for ROW in range(1, art.max_row + 1):
             ART_NO = art["A" + str(ROW)].value
